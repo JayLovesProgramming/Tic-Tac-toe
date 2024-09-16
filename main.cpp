@@ -13,6 +13,8 @@ char currentPlayer;
 string player1, player2;
 bool singlePlayer = false;
 
+
+
 // Function to change console text color
 void setTextColor(int color) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -115,7 +117,10 @@ int getInput() {
 
 // AI's move with random delay
 void aiMove() {
-    srand(time(0));  // seed the random number generator
+    srand(time(0));  // Seed the random number generator
+
+    // Temporarily disable user input
+    cin.clear();  // Clear the error state
 
     // Simulate AI "thinking" with a random delay
     int waitTime = rand() % 3 + 1;  // Random time between 1 and 3 seconds
@@ -133,7 +138,6 @@ void aiMove() {
     cout << "AI chooses position: " << move << '\n';
     board[move - 1] = currentPlayer;
 }
-
 // Initialize the game settings
 void initializeGame() {
     setTextColor(10);  // Green for welcome message
